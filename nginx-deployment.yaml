@@ -1,0 +1,25 @@
+# File: nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-openresty
+  namespace: default  # Ensure this matches your desired namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-openresty
+  template:
+    metadata:
+      labels:
+        app: nginx-openresty
+    spec:
+      containers:
+      - name: nginx-openresty
+        image: openresty-redis-cluster:latest
+        imagePullPolicy: IfNotPresent  # Ensure Kubernetes uses the local image
+        env:
+        - name: REDIS_PASSWORD
+          value: "redis"
+        ports:
+        - containerPort: 80
