@@ -1,7 +1,7 @@
 -- File: test.lua
 local redis_cluster = require "resty.rediscluster"
 
-local redis_password = os.getenv("REDIS_PASSWORD") or "redis"
+local redis_password = os.getenv("REDIS_PASSWORD") or "new-praveen" -- This is the password for the Redis cluster if hard coded.
 
 local config = {
     name = "testCluster",
